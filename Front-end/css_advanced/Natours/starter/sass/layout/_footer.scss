@@ -1,0 +1,82 @@
+@use "../abstract/variables" as var;
+@use "../abstract/mixins" as mixin;
+
+.footer {
+    background-color: var.$color-grey-dark-3;
+    color: var.$color-grey-light-1;
+    padding: 10rem 0;
+    font-size: 1.4rem;
+
+    @include mixin.respond(tab-port) {
+        padding: 8rem 0;
+    }
+
+    &__logo-box {
+        text-align: center;
+        margin-bottom: 8rem;
+
+        @include mixin.respond(tab-port) {
+            margin-bottom: 6rem;
+        }
+    }
+
+    &__logo {
+        width: 15rem;
+        height: auto;
+    }
+
+    &__navigation {
+        display: inline-block;
+        border-top: 1px solid var.$color-grey-dark;
+        padding-top: 2rem;
+
+        @include mixin.respond(tab-port) {
+            width: 100%;
+            text-align: center;
+        }
+    }
+
+    &__list {
+        list-style: none;
+    }
+
+    &__item {
+        display: inline-block;
+        
+        &:not(:last-child) {
+            margin-right: 1.5rem;
+        }
+    }
+
+    &__link {
+
+        &:link,
+        &:visited {
+            display: inline-block;
+            background-color: var.$color-grey-dark-3;
+            color: var.$color-grey-light-1;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: all .2s;
+        }
+
+        &:hover,
+        &:active {
+            color: var.$color-primary;
+            box-shadow: 0 1rem 2rem rgba(var.$color-black, .4);
+            transform: rotate(5deg) scale(1.05);
+        }
+    }
+
+    &__copyright {
+        width: 80%;
+        padding-top: 2rem;
+        border-top: 1px solid var.$color-grey-dark;
+        float: right;
+        
+        @include mixin.respond(tab-port) {
+            width: 100%;
+            float: none;
+        }
+    }
+}

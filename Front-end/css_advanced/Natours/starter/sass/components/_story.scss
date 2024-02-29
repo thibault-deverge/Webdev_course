@@ -1,0 +1,81 @@
+@use "../abstract/variables" as var;
+@use "../abstract/mixins" as mixin;
+
+.story {
+    position: relative;
+    background-color: rgba(var.$color-white, 0.6);
+    font-size: var.$default-font-size;
+    box-shadow: 0 3rem 6rem rgba(var.$color-black, .1);
+    border-radius: 3px;
+
+    width: 75%;
+    margin: 0 auto;
+    padding: 6rem;
+    padding-left: 9rem;
+    transform: skewX(-12deg);
+
+    @include mixin.respond(tab-port) {
+        width: 100%;
+        padding: 4rem;
+        padding-left: 7rem;
+    }
+
+    @include mixin.respond(phone) {
+        transform: translateX(-3rem) skewX(0);
+    }
+
+    & > * {
+        transform: skewX(12deg);
+    }
+
+    &__shape {
+        float: left;
+        width: 15rem;
+        height: 15rem;
+        shape-outside: circle(50% at 50%); // to the element to not overflow
+        clip-path: circle(50% at 50%); // to make it look like a circle
+        transform: translateX(-3rem) skewX(12deg);
+
+        @include mixin.respond(phone) {
+            transform: skewX(0);
+        }
+    }
+
+    &__img {
+        transform: translateX(-4rem) scale(1.4);
+        transition: all .5s;
+        height: 100%;
+    }
+
+    &__text {
+        transform: skewX(12deg);
+
+        @include mixin.respond(phone) {
+            transform: skewX(0);
+        }
+    }
+
+    &__caption {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, 20%);
+        opacity: 0;
+        transition: all .5s;
+
+        color: var.$color-white;
+        font-size: 1.7rem;
+        text-align: center;
+        text-transform: uppercase;
+    }
+
+    &:hover &__caption {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+
+    &:hover &__img {
+        transform: translateX(-4rem) scale(1);
+        filter: blur(3px) brightness(80%);
+    }
+}

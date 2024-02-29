@@ -1,0 +1,32 @@
+@use "./base" as var;
+
+.features {
+    margin: 15rem 0;
+    grid-column: center-start / center-end;
+
+    display: grid;
+    align-items: start;
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    grid-gap: 6rem;
+}
+
+.feature {
+    
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    row-gap: 1.5rem;
+    column-gap: 2rem;
+
+    &__icon {
+        fill: var.$color-primary;
+        width: 4.5rem;
+        height: 4.5rem;
+        transform: translateY(-1rem);
+
+        grid-row: 1 / span 2;
+    }
+
+    &__text {
+        font-size: 1.7rem;
+    }
+}

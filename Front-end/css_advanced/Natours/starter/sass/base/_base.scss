@@ -1,0 +1,36 @@
+@use "../abstract/variables" as var;
+@use "../abstract/mixins" as mix;
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    // Define the font-size for the root element (1rem = 10px)
+    font-size: 62.5%;
+
+    @include mix.respond(tab-land) {
+        font-size: 56.25%;
+    }
+
+    @include mix.respond(tab-port) {
+        font-size: 50%;
+    }
+
+    @include mix.respond(big-desktop) {
+        font-size: 75%;
+    }
+}
+
+body {
+    box-sizing: border-box;
+    padding: 3rem;
+
+    @include mix.respond(tab-port) {
+        padding: 0;
+    }
+}
